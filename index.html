@@ -3,89 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tsuki Attire - Roblox & Art</title>
+    <title>Tsuki Attire - Roblox & Art ♡</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Handjet&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="hero">
-        <h1>Tsuki Attire</h1>
-        <p>Roblox creations, digital art, and chaotic vibes by Tsuki. Dive in! 🎮🖌️</p>
-        <a href="#about" class="btn">Explore</a>
-    </header>
-
-    <section id="about">
-        <h2>About Tsuki</h2>
-        <p>Welcome to my world of pixel-perfect Roblox outfits and dreamy digital illustrations. Whether I'm scripting epic games or sketching ethereal characters, it's all about fun, fashion, and a dash of mischief.</p>
-        <img src="https://via.placeholder.com/300x200/ff69b4/fff?text=Tsuki+Portrait" alt="Tsuki's Portrait"> <!-- Upload your photo here -->
-    </section>
-
-    <section id="roblox">
-        <h2>Roblox Realm</h2>
-        <p>Check out my latest games and avatars. Join the fun!</p>
-        <ul>
-            <li><a href="https://www.roblox.com/users/YOUR-ID/profile" target="_blank">My Roblox Profile</a></li>
-            <li><a href="https://www.roblox.com/games/YOUR-GAME-ID" target="_blank">Featured Game: [Game Name]</a></li>
-            <!-- Add more games/links -->
-        </ul>
-    </section>
-
-    <section id="art">
-        <h2>Art Gallery</h2>
-        <p>A peek into my sketchbook—digital dreams and Roblox-inspired designs.</p>
-        <div class="gallery">
-            <img src="https://via.placeholder.com/200x200/ff69b4/fff?text=Art+1" alt="Art Piece 1">
-            <img src="https://via.placeholder.com/200x200/ff1493/fff?text=Art+2" alt="Art Piece 2">
-            <!-- Add more <img> tags for your art; upload to repo -->
+    <!-- Opening Phone Screen -->
+    <div id="phone-screen" class="phone-screen">
+        <img id="phone" class="phone-icon" src="https://via.placeholder.com/150x300/ff69b4/ff1493?text=📞Tsuki" alt="Ringing Phone"> <!-- Editable: Replace src with your phone art PNG -->
+        <div id="answer-bubble" class="answer-bubble" style="display:none;">
+            <p>Answer? ♡</p>
         </div>
-    </section>
-
-    <section id="links">
-        <h2>Connect</h2>
-        <ul>
-            <li><a href="https://www.roblox.com/users/YOUR-ID/profile" target="_blank">Roblox</a></li>
-            <li><a href="https://twitter.com/tsukiattire" target="_blank">Twitter/X</a></li> <!-- Update handles -->
-            <li><a href="https://instagram.com/tsukiattire" target="_blank">Instagram</a></li>
-            <li><a href="mailto:tsuki@attire.com">Email Tsuki</a></li>
-        </ul>
-    </section>
-
-    <!-- Phone Trigger -->
-    <div id="phone" class="phone">
-        <img src="https://via.placeholder.com/80x120/ff69b4/ff1493?text=📞" alt="Talk to Tsuki"> <!-- Replace with your phone.png -->
     </div>
 
-    <!-- Visual Novel Modal -->
-    <div id="modal" class="modal">
-        <div class="vn-overlay" onclick="closeModal()">
-            <div class="vn-container">
-                <div class="vn-bg"> <!-- Background for VN feel; add image src if you want -->
-                    <img class="vn-sprite" src="https://via.placeholder.com/200x300/ff69b4/fff?text=Tsuki" alt="Tsuki Sprite"> <!-- Your character image -->
+    <!-- Main Content (hidden until answered) -->
+    <div id="main-content" style="display:none;">
+        <header class="hero">
+            <h1>Tsuki Attire ✧</h1>
+            <p>Roblox fashion & dreamy art! Let's play~ 🎮🖌️💕</p> <!-- Editable: Change text -->
+        </header>
+
+        <section id="about">
+            <h2>About Me ⋆｡˚</h2>
+            <p>Hi! I'm Tsuki, creating cute Roblox outfits & illustrations. Join the fun! 🌸</p> <!-- Editable: Short about text -->
+            <img src="https://via.placeholder.com/300x200/ff69b4/fff?text=About+Photo" alt="About Photo" class="about-photo"> <!-- Editable: Replace src with your photo PNG -->
+        </section>
+
+        <section id="stay-updated">
+            <h2>Stay Up to Date ♡</h2>
+            <div class="social-buttons">
+                <!-- Editable: Replace src with your custom button art PNGs, keep href for links -->
+                <a href="https://twitter.com/tsukiattire" target="_blank"><img src="https://via.placeholder.com/200x50/ff69b4/fff?text=Twitter" alt="Twitter Button"></a>
+                <a href="https://instagram.com/tsukiattire" target="_blank"><img src="https://via.placeholder.com/200x50/ff1493/fff?text=Instagram" alt="Instagram Button"></a>
+                <a href="https://www.roblox.com/users/YOUR-ID/profile" target="_blank"><img src="https://via.placeholder.com/200x50/ffb6c1/fff?text=Roblox" alt="Roblox Button"></a>
+                <a href="mailto:tsuki@attire.com"><img src="https://via.placeholder.com/200x50/ffc0cb/fff?text=Email" alt="Email Button"></a>
+                <!-- Add more as needed -->
+            </div>
+        </section>
+
+        <section id="roblox">
+            <h2>Roblox World ✧</h2>
+            <p>My games & avatars~</p> <!-- Editable -->
+            <div class="gallery">
+                <img src="https://via.placeholder.com/200x200/ff69b4/fff?text=Roblox1" alt="Roblox 1"> <!-- Editable: Add your images -->
+                <!-- Add more -->
+            </div>
+        </section>
+
+        <section id="art">
+            <h2>Art Gallery ⋆</h2>
+            <div class="gallery">
+                <img src="https://via.placeholder.com/200x200/ff1493/fff?text=Art1" alt="Art 1"> <!-- Editable -->
+                <!-- Add more -->
+            </div>
+        </section>
+
+        <section id="talk-tsuki">
+            <h2>Talk to Tsuki? 💬</h2>
+            <button id="open-vn" class="vn-button">
+                <img src="https://via.placeholder.com/150x150/ff69b4/fff?text=Chat+Button" alt="Talk Button"> <!-- Editable: Replace src with your custom chat button art -->
+            </button>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Tsuki Attire ♡ Made with sparkles~</p> <!-- Editable -->
+        </footer>
+    </div>
+
+    <!-- Visual Novel Modal (optional, opens on button click) -->
+    <div id="modal" class="modal" style="display:none;">
+        <div class="vn-container">
+            <div class="vn-bg">
+                <img class="vn-character" src="https://via.placeholder.com/200x300/ff69b4/fff?text=Tsuki Chibi" alt="Tsuki Character"> <!-- Editable: Your chibi PNG -->
+            </div>
+            <div class="vn-dialogue">
+                <div id="vn-text" class="vn-text-box">Hi! I'm Tsuki~ What's up? 💫♡</div> <!-- Editable text -->
+                <div id="vn-choices" class="vn-choices">
+                    <button onclick="advanceVN('art')">Talk art? 🎨</button>
+                    <button onclick="advanceVN('roblox')">Roblox chat? 🚀</button>
+                    <button onclick="advanceVN('rant')">Rant time! 🔥</button>
+                    <button onclick="closeModal()">Bye~ 👋</button>
                 </div>
-                <div class="vn-dialogue">
-                    <div id="vn-text">Hi there! I'm Tsuki. What sparks your curiosity today? 💫</div>
-                    <div id="vn-choices">
-                        <button onclick="showRantInput()">I'd love a rant about... (type your topic!)</button>
-                        <button onclick="nextDialogue('art')">Chat about your art process?</button>
-                        <button onclick="nextDialogue('roblox')">Roblox secrets and tips?</button>
-                        <button onclick="closeModal()">Bye for now!</button>
-                    </div>
-                    <!-- Rant Input Form (hidden initially) -->
-                    <form id="rant-form" style="display:none;" action="https://api.web3forms.com/submit" method="POST">
-                        <input type="hidden" name="access_key" value="e24f7b45-cb71-4664-afd4-90b8ffddfa5e">
-                        <input type="hidden" name="subject" value="Rant Request from Visitor">
-                        <div id="vn-text-rant">Spill it—what should I rant about? (e.g., 'bad Roblox updates' or 'art block woes')</div>
-                        <input type="text" name="message" placeholder="Your rant topic..." required style="width:80%; padding:10px; margin:10px;">
-                        <button type="submit">Send to Tsuki!</button>
-                        <button type="button" onclick="backToChoices()">Back</button>
-                    </form>
-                </div>
+                <form id="rant-form" class="vn-form" style="display:none;" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <input type="hidden" name="subject" value="Tsuki Rant Request">
+                    <div class="vn-text-box">What to rant about? (e.g., art block) ♡</div> <!-- Editable -->
+                    <input type="text" name="message" placeholder="Your topic..." required>
+                    <button type="submit">Send! ✉️</button>
+                    <button type="button" onclick="backToStart()">Back ♡</button>
+                </form>
             </div>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Tsuki Attire. All rights reserved. Made with ❤️ and pixels.</p>
-    </footer>
+    <!-- Sparkles -->
+    <div class="sparkles"></div>
 
     <script src="script.js"></script>
 </body>
