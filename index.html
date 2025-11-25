@@ -1,193 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tsuki Attire ♡</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Chewy&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            background: linear-gradient(135deg, #ffc0cb 0%, #ffb6c1 50%, #ff69b4 100%); 
-            color: #333; 
-            min-height: 100vh; 
-            position: relative; 
-            overflow-x: hidden; 
-            text-align: center; 
-        }
-        .sparkles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
-        .sparkle { position: absolute; width: 4px; height: 4px; background: rgba(255,255,255,0.8); border-radius: 50%; animation: float 6s infinite linear; }
-        @keyframes float { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; position: relative; }
-        .hero { 
-            position: relative; height: 70vh; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); border-radius: 30px; margin: 20px 0; backdrop-filter: blur(10px); 
-        }
-        .chibi-pair { display: flex; gap: 20px; align-items: flex-end; }
-        .chibi { width: 200px; height: 400px; border-radius: 20px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .search-bar { 
-            position: absolute; top: 10%; left: 50%; transform: translateX(-50%); width: 70%; padding: 15px; border-radius: 50px; border: 3px solid #ff69b4; background: white; box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
-        }
-        .search-bar::placeholder { color: #ff69b4; text-align: center; }
-        .hero-overlay { 
-            position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.9); padding: 20px 30px; border-radius: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
-        }
-        .hero-overlay h1 { font-family: 'Chewy', cursive; font-size: 2.5em; color: #ff69b4; margin-bottom: 10px; }
-        .tap-btn { 
-            position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #ff69b4, #ff1493); color: white; border: none; padding: 20px 40px; border-radius: 50px; font-size: 1.5em; cursor: pointer; box-shadow: 0 10px 30px rgba(255,105,180,0.4); transition: 0.3s; font-weight: bold; 
-        }
-        .tap-btn:hover { transform: translateX(-50%) scale(1.05); box-shadow: 0 15px 40px rgba(255,105,180,0.5); }
-        .left-buttons { position: absolute; left: 5%; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 15px; }
-        .btn-round { 
-            width: 120px; height: 120px; border-radius: 50%; background: white; border: 3px solid #ff69b4; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; font-size: 0.8em; 
-        }
-        .btn-round:hover { background: #ff69b4; color: white; transform: scale(1.1); }
-        .btn-round img { width: 40px; height: 40px; margin-bottom: 5px; }
-        .others { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); text-align: center; }
-        .others-star { font-size: 3em; color: #ff69b4; margin-bottom: 10px; animation: sparkle 2s infinite; }
-        .others-btn { background: white; border: 3px solid #ff69b4; border-radius: 25px; padding: 10px 20px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .side-note { 
-            position: absolute; right: 15%; bottom: 10%; background: rgba(255,255,255,0.9); padding: 20px; border-radius: 20px; border-left: 5px solid #ff69b4; max-width: 250px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); font-size: 0.9em; 
-        }
-        .phone-screen { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .phone-icon { width: 150px; animation: ring 1s infinite; }
-        @keyframes ring { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(5deg); } 75% { transform: rotate(-5deg); } }
-        .answer-bubble { background: white; padding: 15px 30px; border-radius: 30px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2); margin-top: 20px; font-size: 18px; transition: 0.3s; }
-        .answer-bubble:hover { transform: scale(1.05); }
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; }
-        .vn-container { background: linear-gradient(180deg, #ffc0cb, #fff); border-radius: 30px; width: 90%; max-width: 450px; height: 80%; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-        .vn-char { flex: 1; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 20px; }
-        .vn-char img { width: 180px; height: 280px; border-radius: 20px; }
-        .vn-dialogue { padding: 20px; background: white; border-top: 3px solid #ff69b4; }
-        .vn-text { background: #ffe4e1; border-radius: 20px; padding: 15px; margin-bottom: 15px; border-left: 5px solid #ff69b4; text-align: left; min-height: 60px; }
-        .vn-choices { display: flex; flex-direction: column; gap: 10px; }
-        .vn-choices button, .vn-form button { background: #ff69b4; color: white; border: none; padding: 12px; border-radius: 20px; cursor: pointer; font-size: 16px; transition: 0.3s; }
-        .vn-choices button:hover, .vn-form button:hover { background: #ff1493; }
-        .vn-form { display: none; }
-        .vn-form input { width: 100%; padding: 12px; border-radius: 20px; border: 2px solid #ff69b4; margin: 10px 0; }
-        @media (max-width: 768px) { .left-buttons, .others { position: static; transform: none; margin: 20px auto; } .side-note { position: static; right: auto; bottom: auto; margin: 20px auto; } .chibi-pair { flex-direction: column; } }
-        [contenteditable] { outline: none; cursor: text; }
-        [contenteditable]:focus { background: rgba(255,105,180,0.1); border-radius: 10px; padding: 2px 5px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tsuki Attire ♡</title>
+<style>
+* {margin:0;padding:0;box-sizing:border-box}
+body {font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#ff9ecd,#ffb6c1);min-height:100vh;color:#333;overflow-x:hidden;position:relative}
+.sparkles {position:fixed;inset:0;pointer-events:none;z-index:0}
+.sparkle {position:absolute;width:6px;height:6px;background:#fff;border-radius:50%;animation:sparkle 5s infinite linear;opacity:0.7}
+@keyframes sparkle{0%{transform:translateY(100vh);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh);opacity:0}}
+.container {max-width:1100px;margin:0 auto;padding:20px;position:relative;z-index:1}
+
+/* Hero Card */
+.hero-card {position:relative;background:rgba(255,255,255,0.92);border-radius:35px;padding:40px 30px;margin:30px auto;box-shadow:0 20px 50px rgba(0,0,0,0.2);backdrop-filter:blur(10px)}
+.chibi-duo {display:flex;justify-content:center;gap:30px;align-items:flex-end;margin-bottom:20px}
+.chibi-duo img {width:220px;height:420px;object-fit:cover;border-radius:25px;box-shadow:0 15px 30px rgba(0,0,0,0.2)}
+.search {position:absolute;top:15px;left:50%;transform:translateX(-50%);width:80%;max-width:500px;padding:16px;border-radius:50px;border:4px solid #ff69b4;background:white;box-shadow:0 8px 25px rgba(0,0,0,0.15);text-align:center;font-size:18px}
+.hero-text {background:rgba(255,255,255,0.95);padding:20px 40px;border-radius:30px;box-shadow:0 10px 30px rgba(0,0,0,0.15);margin:-20px auto 30px;max-width:600px}
+.hero-text h1 {font-family:'Chewy',cursive;font-size:3em;color:#ff1493;margin-bottom:10px}
+.tap-btn {background:linear-gradient(135deg,#ff69b4,#ff1493);color:white;border:none;padding:20px 50px;border-radius:50px;font-size:24px;cursor:pointer;box-shadow:0 12px 30px rgba(255,20,147,0.4);transition:0.3s}
+.tap-btn:hover {transform:scale(1.08);box-shadow:0 18px 40px rgba(255,20,147,0.5)}
+
+/* Side buttons */
+.side-left {position:absolute;left:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:20px}
+.side-right {position:absolute;right:20px;top:50%;transform:translateY(-50%);text-align:center}
+.round-btn {width:110px;height:110px;border-radius:50%;background:white;border:4px solid #ff69b4;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,0.15);transition:0.3s;font-size:11px}
+.round-btn:hover {background:#ff69b4;color:white;transform:scale(1.15)}
+.round-btn img {width:45px;margin-bottom:5px}
+.others-star {font-size:5em;color:#ff69b4;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.note {position:absolute;right:30px;bottom:30px;background:rgba(255,255,255,0.95);padding:20px;border-radius:25px;border-left:6px solid #ff69b4;max-width:280px;box-shadow:0 10px 30px rgba(0,0,0,0.15);font-size:14px}
+
+/* Phone & VN */
+.phone-screen {height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fad0e3}
+.phone-icon {width:160px;animation:ring 1.2s infinite}
+@keyframes ring{0%,100%{transform:rotate(0)}25%{transform:rotate(12deg)}75%{transform:rotate(-12deg)}}
+.answer {background:white;padding:18px 40px;border-radius:40px;margin-top:30px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,0.2);font-size:20px}
+.modal {display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:999;align-items:center;justify-content:center}
+.vn-box {background:linear-gradient(180deg,#ffc0cb,#fff);border-radius:40px;width:92%;max-width:480px;height:85%;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,0.4)}
+.vn-chibi {flex:1;display:flex;align-items:flex-end;justify-content:center;padding:30px}
+.vn-chibi img {width:220px;height:340px;border-radius:25px;object-fit:cover}
+.vn-dialog {padding:30px;background:white;border-top:5px solid #ff69b4}
+.vn-text {background:#ffe4e1;border-radius:25px;padding:20px;margin-bottom:20px;border-left:6px solid #ff69b4;text-align:left;font-size:17px;position:relative}
+.vn-text::after {content:'♡';position:absolute;top:-15px;right:15px;font-size:30px;color:#ff69b4}
+.vn-btns button {width:100%;margin:8px 0;padding:15px;background:#ff69b4;color:white;border:none;border-radius:30px;cursor:pointer;font-size:16px}
+.vn-form input {width:100%;padding:15px;border-radius:25px;border:3px solid #ff69b4;margin:10px 0}
+@media (max-width:900px){.side-left,.side-right,.note{position:static;margin:20px auto}.chibi-duo{flex-direction:column;align-items:center}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Chewy&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Sparkles -->
-    <div class="sparkles" id="sparkles"></div>
 
-    <!-- Phone Screen -->
-    <div id="phone-screen" class="phone-screen">
-        <img src="https://purepng.com/public/uploads/large/purepng.com-pink-smartphonepink-smartphonemobilesmart-phone-1701527444464v3k0y.png" alt="Ringing Phone" class="phone-icon">
-        <div class="answer-bubble" onclick="enterSite()">Answer Call from Tsuki ♡</div>
+<div class="sparkles" id="s"></div>
+
+<!-- Phone Opening -->
+<div id="phone" class="phone-screen">
+  <img src="https://i.ibb.co/9y3n7vP/cute-phone.png" class="phone-icon">
+  <div class="answer" onclick="document.getElementById('phone').style.display='none';document.getElementById('main').style.display='block'">Answer Call ♡</div>
+</div>
+
+<!-- Main Card -->
+<div id="main" style="display:none">
+  <div class="container">
+
+    <div class="hero-card">
+      <input class="search" placeholder="Search for cute Roblox fits? ✨" contenteditable>
+
+      <div class="side-left">
+        <div class="round-btn" onclick="alert('Open your playlist here!')"><img src="https://i.ibb.co/4p7v7vL/music.png"><div>Music Playlist</div></div>
+        <div class="round-btn" onclick="window.location.href='https://yourname.github.io/gallery'"><img src="https://i.ibb.co/4p7v7vL/art.png"><div>Memory Book</div></div>
+      </div>
+
+      <div class="chibi-duo">
+        <img src="https://i.ibb.co/4p7v7vL/tsuki1.png" onclick="this.src=prompt('New image URL:')||this.src">
+        <img src="https://i.ibb.co/4p7v7vL/tsuki2.png" onclick="this.src=prompt('New image URL:')||this.src">
+      </div>
+
+      <div class="side-right">
+        <div class="others-star">✦</div>
+        <div style="background:white;padding:15px;border-radius:25px;border:4px solid #ff69b4;cursor:pointer" onclick="window...">Others ♡</div>
+      </div>
+
+      <div class="hero-text" contenteditable>
+        <h1>Tsuki Attire ♡</h1>
+        <p>Roblox fashion & dreamy art world!</p>
+      </div>
+
+      <button class="tap-btn" onclick="document.getElementById('vn').style.display='flex'">Tap me ♥</button>
+
+      <div class="note" contenteditable>
+        <b>Fan Corner ♡</b><br>
+        Submit rants/art via chat! For site only ♡
+      </div>
     </div>
 
-    <!-- Main Site -->
-    <div id="main-site" class="container" style="display: none;">
-        <div class="hero">
-            <div class="left-buttons">
-                <div class="btn-round" onclick="alert('Music Playlist: Embed your Spotify here!')">
-                    <img src="https://www.pngall.com/wp-content/uploads/5/Music-Note-PNG-Image.png" alt="Music">
-                    <div>Music Playlist</div>
-                </div>
-                <div class="btn-round" onclick="scrollToGallery()">
-                    <img src="https://toppng.com/uploads/preview/roblox-logo-png-11562982494kptg1g3g2k.png" alt="Memory">
-                    <div>Memory Book</div>
-                </div>
-            </div>
-            <div class="chibi-pair">
-                <img src="https://i.pinimg.com/originals/4b/4a/4b/4b4a4b4a4b4a4b4a4b4a4b4a4b4a4b4a.png" alt="Chibi 1" class="chibi" contenteditable="false" onclick="editImg(this)">
-                <img src="https://i.pinimg.com/originals/4b/4a/4b/4b4a4b4a4b4a4b4a4b4a4b4a4b4a4b4a.png" alt="Chibi 2" class="chibi" contenteditable="false" onclick="editImg(this)">
-            </div>
-            <div class="others">
-                <div class="others-star">⋆</div>
-                <div class="others-btn" onclick="scrollToSocials()">Others ♡</div>
-            </div>
-            <input type="text" class="search-bar" placeholder="Who needs Roblox tips today? ✨" contenteditable="true">
-            <div class="hero-overlay" contenteditable="true">
-                <h1>Tsuki Attire</h1>
-                <p>A world of Roblox & art magic ♡</p>
-            </div>
-            <button class="tap-btn" onclick="openVN()">Tap me ♥</button>
-            <div class="side-note" contenteditable="true">
-                <h3>Note ♡</h3>
-                <p>This is for fans only! Submit rants/art via chat. Can't post publicly yet, but love to you all~</p>
-            </div>
-        </div>
+  </div>
+</div>
 
-        <!-- Art Gallery -->
-        <section id="gallery" style="margin: 40px 0;">
-            <h2 contenteditable="true">Art Gallery ⋆</h2>
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <img src="https://purepng.com/public/uploads/large/purepng.com-drawing-pencilpencilpencilsdrawing-1701527444464v3k0y.png" alt="Art 1" style="width: 200px; border-radius: 20px;" onclick="editImg(this)">
-                <img src="https://purepng.com/public/uploads/large/purepng.com-drawing-pencildrawing-pencil-1701527444464v3k0y.png" alt="Art 2" style="width: 200px; border-radius: 20px;" onclick="editImg(this)">
-            </div>
-        </section>
-
-        <!-- Socials -->
-        <section id="socials">
-            <h2 contenteditable="true">Connect ♡</h2>
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <a href="https://roblox.com" target="_blank"><img src="https://toppng.com/uploads/preview/roblox-logo-png-11562982494kptg1g3g2k.png" alt="Roblox" style="width: 100px; border-radius: 20px;"></a>
-                <a href="https://twitter.com" target="_blank"><img src="https://www.pngkey.com/png/full/2-27479_twitter-icon-png.png" alt="Twitter" style="width: 100px; border-radius: 20px;"></a>
-            </div>
-        </section>
+<!-- Visual Novel -->
+<div id="vn" class="modal">
+  <div class="vn-box">
+    <div class="vn-chibi"><img src="https://i.ibb.co/4p7v7vL/tsuki-chibi.png" onclick="this.src=prompt('New chibi URL:')||this.src"></div>
+    <div class="vn-dialog">
+      <div class="vn-text" contenteditable>Hi cutie! I'm Tsuki ♡ What do you wanna talk about?</div>
+      <div class="vn-btns">
+        <button onclick="document.querySelector('.vn-text').innerText='Art is life! I love chibi Roblox fits~ 🎨'">Talk Art?</button>
+        <button onclick="document.querySelector('.vn-text').innerText='Roblox secrets incoming! 🚀'">Roblox Chat?</button>
+        <button onclick="document.querySelector('.vn-form').style.display='block';this.parentNode.style.display='none'">Rant Time!</button>
+        <button onclick="document.getElementById('vn').style.display='none'">Bye~</button>
+      </div>
+      <form class="vn-form" style="display:none" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="e24f7b45-cb71-4664-afd4-90b8ffddfa5e">
+        <input type="hidden" name="subject" value="Tsuki Rant ♡">
+        <div class="vn-text" contenteditable>What should I rant about?</div>
+        <input type="text" name="message" placeholder="Your topic..." required>
+        <button type="submit">Send!</button>
+      </form>
     </div>
+  </div>
+</div>
 
-    <!-- VN Modal -->
-    <div id="vn-modal" class="modal">
-        <div class="vn-container">
-            <div class="vn-char">
-                <img src="https://i.pinimg.com/originals/4b/4a/4b/4b4a4b4a4b4a4b4a4b4a4b4a4b4a4b4a.png" alt="Tsuki Chibi" onclick="editImg(this)">
-            </div>
-            <div class="vn-dialogue">
-                <div class="vn-text" contenteditable="true">Hi! I'm Tsuki. What sparks your curiosity today? 💫</div>
-                <div class="vn-choices">
-                    <button onclick="updateVN('Art chat: I love chibi designs! What\'s your fave? 🎨')">Talk Art? 🎨</button>
-                    <button onclick="updateVN('Roblox vibes: Let's talk avatars! 🚀')">Roblox Chat? 🚀</button>
-                    <button onclick="showRant()">Rant Time! 🔥</button>
-                    <button onclick="closeVN()">Bye~ 👋</button>
-                </div>
-                <form class="vn-form" id="rant-form" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="e24f7b45-cb71-4664-afd4-90b8ffddfa5e">
-                    <input type="hidden" name="subject" value="Tsuki Rant Request">
-                    <div class="vn-text" contenteditable="true">What to rant about? ♡</div>
-                    <input type="text" name="message" placeholder="Your topic..." required>
-                    <button type="submit">Send! ✉️</button>
-                    <button type="button" onclick="backVN()">Back</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Sparkles
-        for (let i = 0; i < 30; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = Math.random() * 100 + 'vw';
-            sparkle.style.animationDelay = Math.random() * 6 + 's';
-            document.getElementById('sparkles').appendChild(sparkle);
-        }
-
-        // Enter site
-        setTimeout(() => document.querySelector('.answer-bubble').style.opacity = '1', 1000);
-        function enterSite() {
-            document.getElementById('phone-screen').style.display = 'none';
-            document.getElementById('main-site').style.display = 'block';
-        }
-
-        // VN
-        function openVN() { document.getElementById('vn-modal').style.display = 'flex'; }
-        function closeVN() { document.getElementById('vn-modal').style.display = 'none'; document.getElementById('rant-form').style.display = 'none'; document.querySelector('.vn-choices').style.display = 'flex'; }
-        function updateVN(text) { document.querySelector('.vn-text').textContent = text; }
-        function showRant() { document.querySelector('.vn-choices').style.display = 'none'; document.getElementById('rant-form').style.display = 'block'; }
-        function backVN() { document.getElementById('rant-form').style.display = 'none'; document.querySelector('.vn-choices').style.display = 'flex'; }
-        function scrollToGallery() { document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' }); }
-        function scrollToSocials() { document.getElementById('socials').scrollIntoView({ behavior: 'smooth' }); }
-        function editImg(img) { const newSrc = prompt('Enter new image URL:'); if (newSrc) img.src = newSrc; }
-
-        // Auto-save edits
-        document.addEventListener('input', () => localStorage.setItem('tsuki-site', document.body.innerHTML));
-        window.onload = () => { const saved = localStorage.getItem('tsuki-site'); if (saved) document.body.innerHTML = saved; };
-    </script>
+<script>
+// Sparkles
+for(let i=0;i<40;i++){
+  let s=document.createElement('div');s.className='sparkle';
+  s.style.left=Math.random()*100+'vw';
+  s.style.animationDelay=Math.random()*5+'s';
+  document.getElementById('s').appendChild(s);
+}
+</script>
 </body>
 </html>
