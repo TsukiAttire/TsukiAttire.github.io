@@ -1,0 +1,170 @@
+body {
+    font-family: 'Arial', sans-serif; /* Or add Google Font for artsy vibe */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    position: relative; /* For fixed phone */
+}
+
+.hero {
+    background: linear-gradient(135deg, #ff69b4, #ff1493); /* Pink gradient for Roblox/art pop */
+    color: white;
+    padding: 100px 20px;
+}
+
+h1, h2 {
+    margin: 10px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    color: #ff69b4;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+section {
+    padding: 50px 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li a {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #eee;
+    width: 200px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 5px;
+}
+
+/* New: Art Gallery */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.gallery img {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Phone Styles */
+.phone {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s;
+}
+.phone img {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.phone.ringing {
+    animation: ring 1s infinite;
+}
+@keyframes ring {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Modal / Visual Novel Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+.vn-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.vn-container {
+    background: #fff;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+.vn-bg {
+    flex: 1;
+    background: linear-gradient(to bottom, #ff69b4, #fff); /* VN background */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+.vn-sprite {
+    width: 150px;
+    height: 250px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* Cute chibi shape */
+}
+.vn-dialogue {
+    padding: 20px;
+    background: #f9f9f9;
+    flex-shrink: 0;
+    border-top: 2px solid #ff69b4;
+}
+#vn-text, #vn-text-rant {
+    background: #ff69b4;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+#vn-choices button, #rant-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background: #ff1493;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#vn-choices button:hover, #rant-form button:hover {
+    background: #ff69b4;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .hero { padding: 50px 10px; }
+    .gallery { flex-direction: column; align-items: center; }
+    .vn-container { width: 95%; height: 90%; }
+}
