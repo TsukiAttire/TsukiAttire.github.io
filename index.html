@@ -4,102 +4,155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tsuki Attire ♡</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Handjet&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #ffc0cb, #ffb6c1); color: #333; text-align: center; position: relative; overflow-x: hidden; }
+        h1, h2 { font-family: 'Handjet', cursive; color: #ff69b4; text-shadow: 0 2px 5px rgba(255,105,180,.4); }
+        .hero { position: relative; height: 60vh; display: flex; align-items: center; justify-content: center; margin: 20px 0; }
+        .hero-img { width: 80%; max-width: 400px; height: auto; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+        .hero-text { position: absolute; top: 20%; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,0.9); padding: 20px; border-radius: 25px; box-shadow: 0 5px 15px rgba(0,0,0,.1); }
+        .search-bar { position: absolute; top: 10%; left: 50%; transform: translateX(-50%); width: 80%; max-width: 400px; padding: 15px; border-radius: 30px; border: 3px solid #ff69b4; background: white; box-shadow: 0 5px 15px rgba(0,0,0,.1); }
+        .tap-btn { position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); background: #ff69b4; color: white; border: none; padding: 20px 40px; border-radius: 40px; font-size: 24px; cursor: pointer; box-shadow: 0 10px 25px rgba(255,105,180,.3); transition: 0.3s; }
+        .tap-btn:hover { background: #ff1493; transform: translateX(-50%) scale(1.05); }
+        .buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 40px 0; }
+        .btn-round { background: white; border: 3px solid #ff69b4; border-radius: 30px; padding: 20px 30px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,.1); transition: 0.3s; min-width: 150px; }
+        .btn-round:hover { background: #ff69b4; color: white; transform: scale(1.05); }
+        .side-note { position: absolute; right: 10%; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); padding: 20px; border-radius: 20px; border-left: 5px solid #ff69b4; max-width: 200px; box-shadow: 0 5px 15px rgba(0,0,0,.1); }
+        .phone-screen { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, #ffc0cb, #ffb6c1); }
+        .phone-icon { width: 150px; animation: ring 1s infinite; }
+        @keyframes ring { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(10deg); } 75% { transform: rotate(-10deg); } }
+        .answer-bubble { background: white; padding: 15px 30px; border-radius: 30px; margin-top: 20px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,.2); font-size: 18px; }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); align-items: center; justify-content: center; z-index: 1000; }
+        .vn-container { background: linear-gradient(180deg, #ffc0cb, #fff); border-radius: 30px; width: 90%; max-width: 500px; height: 80%; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,.3); }
+        .vn-bg { flex: 1; display: flex; align-items: flex-end; justify-content: center; padding: 20px; }
+        .vn-char { width: 200px; height: 300px; border-radius: 50%; overflow: hidden; }
+        .vn-dialogue { padding: 20px; }
+        .vn-text-box { background: white; border: 3px solid #ff69b4; border-radius: 20px; padding: 15px; margin-bottom: 15px; position: relative; }
+        .vn-text-box::after { content: '♡'; position: absolute; top: -10px; right: 10px; font-size: 20px; color: #ff69b4; }
+        .vn-choices button, .vn-form button { display: block; width: 100%; margin: 5px 0; padding: 10px; background: #ffe4e1; border: none; border-radius: 20px; color: #ff69b4; cursor: pointer; }
+        .vn-form input { width: 100%; padding: 10px; border-radius: 20px; border: 2px solid #ff69b4; margin: 10px 0; }
+        .sparkles { position: absolute; inset: 0; pointer-events: none; }
+        .sparkle { position: absolute; width: 6px; height: 6px; background: white; border-radius: 50%; animation: sparkle 3s infinite linear; opacity: 0.6; }
+        @keyframes sparkle { 0% { transform: translateY(100vh) rotate(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
+        [contenteditable] { outline: none; }
+        [contenteditable]:focus { background: #fff9fb; outline: 2px solid #ff69b4; border-radius: 10px; }
+        @media (max-width: 600px) { .buttons { flex-direction: column; align-items: center; } .side-note { position: static; transform: none; margin: 20px auto; max-width: none; } }
+    </style>
 </head>
 <body>
 
-<div id="phone-screen" class="phone-screen">
-    <img src="https://i.imgur.com/5d7zX8k.png" alt="Phone" class="phone-icon">
-    <div id="answer-bubble" class="answer-bubble">Answer? ♡</div>
+<!-- Phone Opening (click to enter) -->
+<div id="phone-screen" class="phone-screen" style="display: block;">
+    <img src="https://png.pngtree.com/png-clipart/20230408/original/pngtree-cute-cartoon-phone-png-image_9086589.png" alt="Cute Ringing Phone" class="phone-icon">
+    <div id="answer-bubble" class="answer-bubble" style="display: none;">Tap to enter Tsuki's world ♡</div>
 </div>
 
-<div id="main-content">
+<!-- Main Cute Layout (hidden until entered) -->
+<div id="main-site" style="display: none;">
+    <!-- Hero with big image/logo area -->
+    <div class="hero">
+        <input type="text" class="search-bar" placeholder="Search for art or rants? ✨" contenteditable="true">
+        <div class="hero-text" contenteditable="true">
+            <h1>Tsuki Attire ♡</h1>
+            <p>Roblox & Art Vibes – Who's ready to create? 🎮🖌️</p>
+        </div>
+        <img src="https://png.pngtree.com/png-clipart/20230612/original/pngtree-cute-chibi-girl-png-image_9132253.png" alt="Tsuki Logo/Chibi" class="hero-img" onclick="this.src=prompt('New image URL?') || this.src;">
+        <button class="tap-btn" onclick="openVN()">Talk to Tsuki ♡</button>
+    </div>
 
-    <header class="hero" contenteditable="true">Tsuki Attire ✧<br><small>Roblox fashion & dreamy art ♡</small></header>
+    <!-- Cute buttons like ref -->
+    <div class="buttons">
+        <div class="btn-round" onclick="alert('Music playlist opens! Edit link in code.')">
+            <img src="https://png.pngtree.com/png-clipart/20240105/original/pngtree-cute-music-note-png-image_12291905.png" alt="Music" style="width: 50px; height: 50px;">
+            <br>Music Playlist
+        </div>
+        <div class="btn-round" onclick="scrollTo('gallery')">
+            <img src="https://www.kindpng.com/picc/m/93-937058_roblox-character-png-images-free-transparent-roblox.png" alt="Art" style="width: 50px; height: 50px;">
+            <br>Art Gallery
+        </div>
+        <div class="btn-round" onclick="scrollTo('social')">
+            <img src="https://png.pngtree.com/png-clipart/20230408/original/pngtree-cute-social-media-png-image_9086590.png" alt="Socials" style="width: 50px; height: 50px;">
+            <br>Socials & Roblox
+        </div>
+    </div>
 
-    <section id="about">
-        <h2 contenteditable="true">About Me ⋆｡˚</h2>
-        <p contenteditable="true">Hi! I'm Tsuki~ I make cute Roblox outfits and digital art. Welcome to my little world!</p>
-        <div class="img-box"><img src="https://i.imgur.com/8jK5pLm.png" alt="About"></div>
+    <!-- Side note like ref -->
+    <div class="side-note">
+        <h3>Fan Corner ♡</h3>
+        <p>Note: Submit art/rants via "Talk to Tsuki" – for website only! Can't post publicly yet, but I'll feature faves~</p>
+    </div>
+
+    <!-- Art Gallery Section -->
+    <section id="gallery" style="margin: 40px 0;">
+        <h2 contenteditable="true">Art Gallery ✨</h2>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <img src="https://png.pngtree.com/png-clipart/20230612/original/pngtree-cute-chibi-art-png-image_9132254.png" alt="Art 1" style="width: 200px; height: 200px; border-radius: 20px;" onclick="this.src=prompt('New art URL?') || this.src;">
+            <img src="https://www.kindpng.com/picc/m/93-937058_roblox-character-png-images-free-transparent-roblox.png" alt="Art 2" style="width: 200px; height: 200px; border-radius: 20px;" onclick="this.src=prompt('New art URL?') || this.src;">
+            <!-- Add more by copying <img> tags -->
+        </div>
     </section>
 
+    <!-- Socials Section -->
     <section id="social">
-        <h2 contenteditable="true">Stay Up to Date ♡</h2>
-        <div id="social-buttons">
-            <a href="#" target="_blank"><img src="https://i.imgur.com/X5p8i2J.png" alt="Roblox"></a>
-            <a href="#" target="_blank"><img src="https://i.imgur.com/3nL6T8v.png" alt="Twitter"></a>
-            <a href="#" target="_blank"><img src="https://i.imgur.com/Q2w9mKp.png" alt="Instagram"></a>
-        </div>
-        <button onclick="addSocial()">＋ Add another link</button>
-    </section>
-
-    <section id="talk">
-        <h2 contenteditable="true">Talk to Tsuki? 💬</h2>
-        <div class="img-box big" onclick="openVN()">
-            <img src="https://i.imgur.com/vR9kP5s.png" alt="Chat button">
+        <h2 contenteditable="true">Connect ♡</h2>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <a href="https://www.roblox.com" target="_blank"><img src="https://png.pngtree.com/png-clipart/20230408/original/pngtree-cute-roblox-icon-png-image_9086591.png" alt="Roblox" style="width: 100px; height: 100px; border-radius: 20px;"></a>
+            <a href="https://twitter.com" target="_blank"><img src="https://png.pngtree.com/png-clipart/20230408/original/pngtree-cute-twitter-icon-png-image_9086592.png" alt="Twitter" style="width: 100px; height: 100px; border-radius: 20px;"></a>
+            <!-- Edit hrefs by right-clicking or code -->
         </div>
     </section>
-
 </div>
 
+<!-- VN Modal -->
 <div id="modal" class="modal">
     <div class="vn-container">
         <div class="vn-bg">
-            <div class="img-box vn-char"><img src="https://i.imgur.com/0zL8fXt.png" alt="Tsuki chibi"></div>
+            <div class="vn-char"><img src="https://png.pngtree.com/png-clipart/20230612/original/pngtree-cute-chibi-girl-png-image_9132253.png" alt="Tsuki" onclick="this.src=prompt('New chibi URL?') || this.src;" style="width: 100%; height: 100%; object-fit: cover;"></div>
         </div>
         <div class="vn-dialogue">
-            <div class="vn-text-box" contenteditable="true">Hi there! I'm Tsuki. What sparks your curiosity today? 💫</div>
+            <div class="vn-text-box" contenteditable="true">Hi! I'm Tsuki~ What do you wanna chat about? 💕</div>
             <div class="vn-choices">
-                <button contenteditable="true">Talk art? 🎨</button>
-                <button contenteditable="true">Roblox chat? 🚀</button>
-                <button onclick="document.getElementById('rant-form').style.display='block';this.parentNode.style.display='none'">Rant time! 🔥</button>
+                <button contenteditable="true" onclick="updateText('Art vibes: I love drawing Roblox chars! What\'s your fave? 🎨')">Talk Art?</button>
+                <button contenteditable="true" onclick="updateText('Roblox secrets: Pro tip – always customize avatars! 🚀')">Roblox Chat?</button>
+                <button onclick="showRant()">Rant Time! 🔥</button>
                 <button onclick="closeVN()">Bye~ 👋</button>
             </div>
-            <form id="rant-form" style="display:none;" action="https://api.web3forms.com/submit" method="POST">
+            <form id="rant-form" style="display: none;" action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="e24f7b45-cb71-4664-afd4-90b8ffddfa5e">
-                <input type="hidden" name="subject" value="Tsuki Rant Request">
-                <div class="vn-text-box" contenteditable="true">Ooh a rant? Tell me the topic! ♡</div>
-                <input type="text" name="message" placeholder="Type here..." required>
-                <button type="submit">Send! ✉️</button>
+                <input type="hidden" name="subject" value="Tsuki Rant Request ♡">
+                <div class="vn-text-box" contenteditable="true">Spill the tea – what should I rant about? (e.g., bad updates)</div>
+                <input type="text" name="message" placeholder="Your topic here..." required>
+                <button type="submit">Send to Tsuki! ✉️</button>
             </form>
         </div>
     </div>
 </div>
 
+<!-- Sparkles -->
 <div class="sparkles"></div>
 <script>
-setTimeout(()=>document.getElementById('answer-bubble').style.display='block',3000);
-document.getElementById('answer-bubble').onclick=()=>{document.getElementById('phone-screen').style.display='none';document.getElementById('main-content').style.display='block'}
-function openVN(){document.getElementById('modal').style.display='flex'}
-function closeVN(){document.getElementById('modal').style.display='none';document.getElementById('rant-form').style.display='none';document.querySelector('.vn-choices').style.display='block'}
-document.querySelectorAll('.img-box').forEach(b=>{b.onclick=()=>{const i=document.createElement('input');i.type='file';i.accept='image/*';i.onchange=e=>{const f=e.target.files[0];if(f){const r=new FileReader();r.onload=()=>{b.querySelector('img').src=r.result};r.readAsDataURL(f)}};i.click()}})
-// sparkles
-for(let i=0;i<30;i++){let s=document.createElement('div');s.style.cssText=`position:absolute;width:8px;height:8px;background:#fff;border-radius:50%;left:${Math.random()*100}vw;top:${Math.random()*100}vh;animation:sparkle ${3+Math.random()*4}s infinite`;document.querySelector('.sparkles').appendChild(s)}
+    // Phone entry
+    setTimeout(() => document.getElementById('answer-bubble').style.display = 'block', 2000);
+    document.getElementById('answer-bubble').onclick = () => {
+        document.getElementById('phone-screen').style.display = 'none';
+        document.getElementById('main-site').style.display = 'block';
+    };
+    // VN functions
+    function openVN() { document.getElementById('modal').style.display = 'flex'; }
+    function closeVN() { document.getElementById('modal').style.display = 'none'; document.getElementById('rant-form').style.display = 'none'; document.querySelector('.vn-choices').style.display = 'block'; }
+    function updateText(txt) { document.querySelector('.vn-text-box').textContent = txt; }
+    function showRant() { document.querySelector('.vn-choices').style.display = 'none'; document.getElementById('rant-form').style.display = 'block'; }
+    function scrollTo(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
+    // Sparkles
+    for (let i = 0; i < 20; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + 'vw';
+        sparkle.style.animationDelay = Math.random() * 3 + 's';
+        document.querySelector('.sparkles').appendChild(sparkle);
+    }
+    // Save edits (basic browser storage)
+    document.addEventListener('input', () => localStorage.setItem('tsuki-edits', document.body.innerHTML));
 </script>
-<style>
-@keyframes sparkle{0%,100%{opacity:0;transform:translateY(0)}50%{opacity:1}100%{transform:translateY(-100vh)}}
-body{margin:0;font-family:Poppins,sans-serif;background:linear-gradient(180deg,#ffc0cb,#ffb6c1);color:#333;text-align:center}
-h1,h2{font-family:Handjet,cursive;color:#ff69b4;text-shadow:0 2px 5px rgba(255,105,180,.4)}
-section,header{margin:20px auto;padding:40px;max-width:90%;border-radius:30px;background:rgba(255,255,255,.93);box-shadow:0 10px 30px rgba(0,0,0,.15)}
-[contenteditable]:focus{outline:3px solid #ff69b4;border-radius:12px;background:#fff9fb}
-.img-box{width:300px;height:300px;border:4px dashed #ff69b4;border-radius:25px;margin:20px auto;overflow:hidden;cursor:pointer}
-.img-box img{width:100%;height:100%;object-fit:cover}
-.big{width:200px;height:200px}
-.vn-char{width:250px;height:350px}
-#social-buttons img{width:260px;margin:12px;border-radius:25px;box-shadow:0 8px 20px rgba(0,0,0,.2)}
-.phone-screen{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fad0e3}
-.phone-icon{width:160px;animation:ring 1s infinite}
-@keyframes ring{0%,100%{transform:rotate(0)}20%{transform:rotate(15deg)}60%{transform:rotate(-15deg)}100%{transform:rotate(0)}}
-.answer-bubble{background:white;padding:16px 35px;border-radius:40px;margin-top:30px;font-size:20px;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.3)}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);align-items:center;justify-content:center}
-.vn-container{background:linear-gradient(180deg,#ffc0cb,#fff);border-radius:40px;width:92%;max-width:500px;height:88%;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.5)}
-.vn-bg{flex:1;display:flex;align-items:flex-end;justify-content:center;padding:30px}
-.vn-dialogue{padding:30px}
-.vn-text-box{background:white;border:4px solid #ff69b4;border-radius:25px;padding:20px;margin-bottom:20px;position:relative}
-.vn-text-box::after{content:'♡';position:absolute;top:-18px;right:18px;font-size:32px;color:#ff69b4}
-.vn-choices button,.vn-form button{width:100%;margin:10px 0;background:#ffe4e1;color:#ff69b4;border:none;border-radius:40px;padding:16px;font-size:16px}
-.vn-form input{width:100%;padding:16px;border-radius:30px;border:3px solid #ff69b4;margin:12px 0}
-</style>
 </body>
 </html>
