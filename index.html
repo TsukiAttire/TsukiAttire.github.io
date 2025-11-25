@@ -9,31 +9,30 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#3b2a2a;font-family:'VT323',monospace;color:#ff99aa;image-rendering:pixelated;min-height:100vh;overflow:hidden}
 .sparkles{position:fixed;inset:0;pointer-events:none}
-.sparkle{position:absolute;width:5px;height:5px;background:#ffb3c6;animation:f 7s linear infinite}
-@keyframes f{0%{transform:translateY(-20px);opacity:0}20%{opacity:1}100%{transform:translateY(110vh);opacity:0}}
+.sparkle{position:absolute;width:5px;height:5px;background:#ffb3c6;animation:f 8s linear infinite}
+@keyframes f{0%{transform:translateY(-30px);opacity:0}15%{opacity:1}100%{transform:translateY(110vh);opacity:0}}
 
-/* Phone */
-#phone{width:100vw;height:100vh;background:#5c3d3d;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px}
-#phone img{max-width:80%}
-.answer{background:#ff99aa;color:#3b2a2a;padding:14px 50px;font-size:32px;border:6px solid #ffe6e9;box-shadow:0 0 0 6px #cc4455;cursor:pointer}
+/* Phone screen */
+#phone{height:100vh;background:#5c3d3d;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:50px}
+#phone img{max-width:70%}
+.answer{background:#ff99aa;color:#3b2a2a;padding:16px 60px;font-size:34px;border:6px solid #ffe6e9;box-shadow:0 0 0 6px #cc4455;cursor:pointer}
 
-/* Main */
-#main{display:none;width:100%;max-width:900px;margin:20px auto;padding:20px}
+/* Main card */
+#main{display:none;padding:20px}
 .card{background:#ffe6e9;border:10px solid #cc4455;box-shadow:0 0 0 10px #ff99aa;padding:40px;text-align:center}
-.hero-area{width:100%;height:520px;background:#fff0f0;border:8px solid #ff99aa;box-shadow:inset 0 0 0 8px #cc4455;margin:30px 0;display:flex;align-items:center;justify-content:center;font-size:28px;color:#cc4455}
+.hero-area{width:100%;height:520px;background:#fff0f0;border:8px solid #ff99aa;box-shadow:inset 0 0 0 8px #cc4455;margin:30px 0;display:flex;align-items:center;justify-content:center}
 .hero-area img{max-width:96%;max-height:96%;object-fit:contain}
-.tap{background:#cc4455;color:#ffe6e9;padding:20px 80px;font-size:40px;border:8px solid #ff99aa;box-shadow:0 0 0 8px #3b2a2a;cursor:pointer}
+.tap{background:#cc4455;color:#ffe6e9;padding:20px 80px;font-size:42px;border:8px solid #ff99aa;box-shadow:0 0 0 8px #3b2a2a;cursor:pointer}
 
-/* VN */
-.modal{display:none;position:fixed;inset:0;background:rgba(59,42,42,0.97);align-items:center;justify-content:center;z-index:999}
-.vn{width:94%;max-width:560px;background:#ffe6e9;border:12px solid #cc4455;box-shadow:0 0 0 12px #ff99aa;height:90vh;display:flex;flex-direction:column}
-.vn-chibi{position:relative;flex:1;display:flex;align-items:flex-end;justify-content:center;padding:40px;background:#5c3d3d}
-.vn-chibi img{max-height:88%}
-.namebox{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:url(https://i.ibb.co/5Yv1f7K/tsuki-dialogue.png) center/contain no-repeat;width:80%;height:100px;display:flex;align-items:center;justify-content:center;font-size:28px;color:#000}
-.dialogbox{position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);background:url(https://i.ibb.co/5Yv1f7K/tsuki-dialogue.png) center/contain no-repeat;width:94%;height:180px;display:flex;align-items:center;justify-content:center;padding:60px;text-align:center;font-size:26px;color:#000}
-.vn-buttons{padding:20px;display:flex;flex-direction:column;gap:15px}
-.vn-buttons button{background:url(https://i.ibb.co/5Yv1f7K/tsuki-dialogue.png) center/contain no-repeat;background-color:#ffccd5;height:100px;border:none;color:#000;font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.vn-form input{padding:18px;background:#fff;border:5px solid #cc4455;font-size:24px}
+/* Visual Novel */
+#vn{display:none;position:fixed;inset:0;background:rgba(59,42,42,0.98);align-items:center;justify-content:center;z-index:999}
+.vn-box{width:94%;max-width:560px;height:90vh;background:#ffe6e9;border:12px solid #cc4455;box-shadow:0 0 0 12px #ff99aa;display:flex;flex-direction:column}
+.chibi-area{flex:1;position:relative;background:#5c3d3d;display:flex;align-items:flex-end;justify-content:center}
+#chibi-img{max-height:92%}
+.name-box{position:absolute;bottom:90px;left:50%;transform:translateX(-50%);background:url(https://i.ibb.co/5Yv1f7K/tsuki-dialogue.png) center/contain no-repeat;width:70%;height:90px;display:flex;align-items:center;justify-content:center;font-size:30px;color:#000}
+.text-box{position:absolute;bottom:-70px;left:50%;transform:translateX(-50%);background:url(https://i.ibb.co/5Yv1f7K/tsuki-dialogue.png) center/contain no-repeat;width:90%;height:180px;display:flex;align-items:center;justify-content:center;padding:50px;text-align:center;font-size:26px;color:#000}
+.choices{padding:20px;display:flex;flex-direction:column;gap:12px}
+.choices button{background:url(https://i.ibb.co/5Yv1f7K/tsuki-dialogue.png) center/contain no-repeat;background-color:#ffccd5;height:100px;border:none;color:#000;font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center}
 </style>
 </head>
 <body>
@@ -42,51 +41,56 @@ body{background:#3b2a2a;font-family:'VT323',monospace;color:#ff99aa;image-render
 
 <!-- Phone -->
 <div id="phone">
-  <img src="https://i.ibb.co/5Yv1f7K/phone-pixel.png">
+  <img src="https://i.ibb.co/5Yv1f7K/phone-pixel.png" alt="phone">
   <div class="answer" onclick="document.getElementById('phone').style.display='none';document.getElementById('main').style.display='block'">Answer ♡</div>
 </div>
 
 <!-- Main -->
 <div id="main">
   <div class="card">
-    <div class="hero-area upload" onclick="upload(this)">
-      <div>CLICK FOR HERO BANNER</div>
-      <img>
+    <div class="hero-area" onclick="let i=document.createElement('input');i.type='file';i.accept='image/*';i.onchange=e=>{if(e.target.files[0]){let r=new FileReader();r.onload=()=>{this.querySelector('img').src=r.result;save()};r.readAsDataURL(e.target.files[0])};i.click()}">
+      <div style="color:#cc4455;font-size:28px">CLICK TO ADD HERO BANNER</div>
+      <img src="" alt="">
     </div>
     <div class="tap" onclick="document.getElementById('vn').style.display='flex'">Tap me ♥</div>
   </div>
 </div>
 
 <!-- Visual Novel -->
-<div id="vn" class="modal" onclick="if(event.target===this)this.style.display='none'">
-  <div class="vn">
-    <div class="vn-chibi">
-      <img id="chibi" src="https://i.ibb.co/5Yv1f7K/tsuki-neutral.png">
-      <div class="namebox">Tsuki</div>
+<div id="vn" onclick="if(event.target===this)this.style.display='none'">
+  <div class="vn-box">
+    <div class="chibi-area">
+      <img id="chibi-img" src="https://i.ibb.co/5Yv1f7K/tsuki-neutral.png" alt="tsuki">
+      <div class="name-box">Tsuki</div>
     </div>
-    <div class="dialogbox" id="dialog">hey cutie ♡</div>
-    <div class="vn-buttons" id="choices">
-      <button onclick="say('aww you’re sweet~', 'happy')">Compliment me</button>
-      <button onclick="say('ugh whatever...', 'annoyed')">Be mean</button>
-      <button onclick="document.getElementById('choices').style.display='none';document.getElementById('rant').style.display='block';change('angry')">Rant</button>
+    <div class="text-box" id="text">hey cutie ♡</div>
+    <div class="choices">
+      <button onclick="talk('aww thank you~ ♡','happy')">compliment tsuki</button>
+      <button onclick="talk('hmph.','annoyed')">be rude</button>
+      <button onclick="document.querySelector('.choices').style.display='none';document.querySelector('#rant').style.display='block';change('angry')">rant to me</button>
       <button onclick="document.getElementById('vn').style.display='none'">bye</button>
     </div>
-    <form id="rant" class="vn-form" style="display:none" action="https://api.web3forms.com/submit" method="POST">
+    <form id="rant" style="display:none;padding:20px" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="e24f7b45-cb71-4664-afd4-90b8ffddfa5e">
-      <input type="text" name="message" placeholder="type your rant..." required>
-      <button type="submit">send</button>
+      <input type="text" name="message" placeholder="type your rant..." style="width:100%;padding:18px;background:#fff;border:5px solid #cc4455;font-family:'VT323',monospace;font-size:24px" required>
+      <button type="submit" style="margin-top:10px;width:100%;padding:18px;background:#cc4455;color:#ffe6e9;border:5px solid #ff99aa;font-size:24px;cursor:pointer">send</button>
     </form>
   </div>
 </div>
 
 <script>
 // sparkles
-for(let i=0;i<70;i++){let k=document.createElement('div');k.className='sparkle';k.style.left=Math.random()*100+'vw';k.style.animationDelay=Math.random()*7+'s';document.getElementById('s').appendChild(k);}
+for(let i=0;i<80;i++){
+  let k=document.createElement('div');k.className='sparkle';
+  k.style.left=Math.random()*100+'vw';
+  k.style.animationDelay=Math.random()*8+'s';
+  document.getElementById('s').appendChild(k);
+}
 
 // change sprite + text
-function say(text, mood){
-  document.getElementById('dialog').innerText=text;
-  change(mood);
+function talk(t,m){
+  document.getElementById('text').innerText=t;
+  change(m);
 }
 function change(mood){
   const sprites={
@@ -98,22 +102,16 @@ function change(mood){
     rose:"https://i.ibb.co/5Yv1f7K/tsuki-rose.png",
     fangs:"https://i.ibb.co/5Yv1f7K/tsuki-fangs.png",
     phone:"https://i.ibb.co/5Yv1f7K/tsuki-phone.png",
-    smirk:"https://i.ibb.co/5Yv1f7K/tsuki-smirk.png"
+    smirk:"https://i.ibb.co/5Yv1f7K/tsuki-smirk.png",
+    default:"https://i.ibb.co/5Yv1f7K/tsuki-neutral.png"
   };
-  document.getElementById('chibi').src=sprites[mood]||sprites.neutral;
+  document.getElementById('chibi-img').src = sprites[mood] || sprites.default;
 }
 
-// hero upload only
-function upload(e){
-  let i=document.createElement('input');i.type='file';i.accept='image/*';
-  i.onchange=t=>{if(t.target.files[0]){let r=new FileReader();r.onload=()=>{let img=e.querySelector('img');img.src=r.result;save()};r.readAsDataURL(t.target.files[0])}};
-  i.click();
-}
-
-// auto-save
-function save(){localStorage.setItem('tsuki-final-vn',document.body.innerHTML)}
+// auto-save everything
+function save(){localStorage.setItem('tsuki-perfect',document.body.innerHTML)}
 document.addEventListener('input',()=>setTimeout(save,300));
-window.onload=()=>{let s=localStorage.getItem('tsuki-final-vn');if(s)document.body.innerHTML=s;}
+window.onload=()=>{let saved=localStorage.getItem('tsuki-perfect');if(saved)document.body.innerHTML=saved;}
 </script>
 </body>
 </html>
