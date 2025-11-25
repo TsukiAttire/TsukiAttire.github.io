@@ -3,102 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tsuki Attire - Roblox & Art ♡</title>
+    <title>Tsuki Attire ♡</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Handjet&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Opening Phone Screen -->
     <div id="phone-screen" class="phone-screen">
-        <img id="phone" class="phone-icon" src="https://via.placeholder.com/150x300/ff69b4/ff1493?text=📞Tsuki" alt="Ringing Phone"> <!-- Editable: Replace src with your phone art PNG -->
-        <div id="answer-bubble" class="answer-bubble" style="display:none;">
-            <p>Answer? ♡</p>
-        </div>
+        <img id="phone-icon" class="phone-icon" src="https://via.placeholder.com/150x300/ff69b4/ff1493?text=Phone" alt="Phone">
+        <div id="answer-bubble" class="answer-bubble" style="display:none;">Answer? ♡</div>
     </div>
 
-    <!-- Main Content (hidden until answered) -->
+    <!-- Main Site (hidden until answered) -->
     <div id="main-content" style="display:none;">
-        <header class="hero">
-            <h1>Tsuki Attire ✧</h1>
-            <p>Roblox fashion & dreamy art! Let's play~ 🎮🖌️💕</p> <!-- Editable: Change text -->
-        </header>
+        <header class="hero" contenteditable="true" data-key="title">Tsuki Attire ✧<br><small>Roblox fashion & dreamy art! Let's play~ 🎮🖌️💕</small></header>
 
         <section id="about">
-            <h2>About Me ⋆｡˚</h2>
-            <p>Hi! I'm Tsuki, creating cute Roblox outfits & illustrations. Join the fun! 🌸</p> <!-- Editable: Short about text -->
-            <img src="https://via.placeholder.com/300x200/ff69b4/fff?text=About+Photo" alt="About Photo" class="about-photo"> <!-- Editable: Replace src with your photo PNG -->
+            <h2 contenteditable="true" data-key="about-title">About Me ⋆｡˚</h2>
+            <p contenteditable="true" data-key="about-text">Hi! I'm Tsuki, creating cute Roblox outfits & illustrations. Join the fun! 🌸</p>
+            <div class="image-drop" data-key="about-photo">Drop your about photo here or click to upload</div>
         </section>
 
         <section id="stay-updated">
-            <h2>Stay Up to Date ♡</h2>
-            <div class="social-buttons">
-                <!-- Editable: Replace src with your custom button art PNGs, keep href for links -->
-                <a href="https://twitter.com/tsukiattire" target="_blank"><img src="https://via.placeholder.com/200x50/ff69b4/fff?text=Twitter" alt="Twitter Button"></a>
-                <a href="https://instagram.com/tsukiattire" target="_blank"><img src="https://via.placeholder.com/200x50/ff1493/fff?text=Instagram" alt="Instagram Button"></a>
-                <a href="https://www.roblox.com/users/YOUR-ID/profile" target="_blank"><img src="https://via.placeholder.com/200x50/ffb6c1/fff?text=Roblox" alt="Roblox Button"></a>
-                <a href="mailto:tsuki@attire.com"><img src="https://via.placeholder.com/200x50/ffc0cb/fff?text=Email" alt="Email Button"></a>
-                <!-- Add more as needed -->
+            <h2 contenteditable="true" data-key="social-title">Stay Up to Date ♡</h2>
+            <div id="social-buttons" class="social-buttons">
+                <!-- You’ll add these with the + button below -->
             </div>
-        </section>
-
-        <section id="roblox">
-            <h2>Roblox World ✧</h2>
-            <p>My games & avatars~</p> <!-- Editable -->
-            <div class="gallery">
-                <img src="https://via.placeholder.com/200x200/ff69b4/fff?text=Roblox1" alt="Roblox 1"> <!-- Editable: Add your images -->
-                <!-- Add more -->
-            </div>
-        </section>
-
-        <section id="art">
-            <h2>Art Gallery ⋆</h2>
-            <div class="gallery">
-                <img src="https://via.placeholder.com/200x200/ff1493/fff?text=Art1" alt="Art 1"> <!-- Editable -->
-                <!-- Add more -->
-            </div>
+            <button onclick="addSocial()">＋ Add Social Button</button>
         </section>
 
         <section id="talk-tsuki">
-            <h2>Talk to Tsuki? 💬</h2>
-            <button id="open-vn" class="vn-button">
-                <img src="https://via.placeholder.com/150x150/ff69b4/fff?text=Chat+Button" alt="Talk Button"> <!-- Editable: Replace src with your custom chat button art -->
-            </button>
+            <h2 contenteditable="true" data-key="vn-title">Talk to Tsuki? 💬</h2>
+            <div class="image-drop" data-key="vn-button">Drop your chat button image here</div>
         </section>
 
-        <footer>
-            <p>&copy; 2025 Tsuki Attire ♡ Made with sparkles~</p> <!-- Editable -->
-        </footer>
+        <footer contenteditable="true" data-key="footer">© 2025 Tsuki Attire ♡ Made with sparkles~</footer>
     </div>
 
-    <!-- Visual Novel Modal (optional, opens on button click) -->
+    <!-- Visual Novel Modal -->
     <div id="modal" class="modal" style="display:none;">
         <div class="vn-container">
             <div class="vn-bg">
-                <img class="vn-character" src="https://via.placeholder.com/200x300/ff69b4/fff?text=Tsuki Chibi" alt="Tsuki Character"> <!-- Editable: Your chibi PNG -->
+                <div class="image-drop" data-key="vn-character">Drop Tsuki chibi here</div>
             </div>
             <div class="vn-dialogue">
-                <div id="vn-text" class="vn-text-box">Hi! I'm Tsuki~ What's up? 💫♡</div> <!-- Editable text -->
+                <div id="vn-text" class="vn-text-box" contenteditable="true" data-key="vn-greeting">Hi! I'm Tsuki~ What's up? 💫♡</div>
                 <div id="vn-choices" class="vn-choices">
-                    <button onclick="advanceVN('art')">Talk art? 🎨</button>
-                    <button onclick="advanceVN('roblox')">Roblox chat? 🚀</button>
-                    <button onclick="advanceVN('rant')">Rant time! 🔥</button>
+                    <button contenteditable="true" data-key="choice1">Talk art? 🎨</button>
+                    <button contenteditable="true" data-key="choice2">Roblox chat? 🚀</button>
+                    <button onclick="showRant()">Rant time! 🔥</button>
                     <button onclick="closeModal()">Bye~ 👋</button>
                 </div>
                 <form id="rant-form" class="vn-form" style="display:none;" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                    <input type="hidden" name="subject" value="Tsuki Rant Request">
-                    <div class="vn-text-box">What to rant about? (e.g., art block) ♡</div> <!-- Editable -->
-                    <input type="text" name="message" placeholder="Your topic..." required>
+                    <input type="hidden" name="access_key" value="e24f7b45-cb71-4664-afd4-90b8ffddfa5e">
+                    <input type="hidden" name="subject" value="Tsuki Rant Request ♡">
+                    <div class="vn-text-box" contenteditable="true" data-key="rant-prompt">What should I rant about? ♡</div>
+                    <input type="text" name="message" placeholder="Type here..." required>
                     <button type="submit">Send! ✉️</button>
-                    <button type="button" onclick="backToStart()">Back ♡</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Sparkles -->
     <div class="sparkles"></div>
-
     <script src="script.js"></script>
 </body>
 </html>
