@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tsuki Attire - Roblox & Art</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="hero">
+        <h1>Tsuki Attire</h1>
+        <p>Roblox creations, digital art, and chaotic vibes by Tsuki. Dive in! 🎮🖌️</p>
+        <a href="#about" class="btn">Explore</a>
+    </header>
+
+    <section id="about">
+        <h2>About Tsuki</h2>
+        <p>Welcome to my world of pixel-perfect Roblox outfits and dreamy digital illustrations. Whether I'm scripting epic games or sketching ethereal characters, it's all about fun, fashion, and a dash of mischief.</p>
+        <img src="https://via.placeholder.com/300x200/ff69b4/fff?text=Tsuki+Portrait" alt="Tsuki's Portrait"> <!-- Upload your photo here -->
+    </section>
+
+    <section id="roblox">
+        <h2>Roblox Realm</h2>
+        <p>Check out my latest games and avatars. Join the fun!</p>
+        <ul>
+            <li><a href="https://www.roblox.com/users/YOUR-ID/profile" target="_blank">My Roblox Profile</a></li>
+            <li><a href="https://www.roblox.com/games/YOUR-GAME-ID" target="_blank">Featured Game: [Game Name]</a></li>
+            <!-- Add more games/links -->
+        </ul>
+    </section>
+
+    <section id="art">
+        <h2>Art Gallery</h2>
+        <p>A peek into my sketchbook—digital dreams and Roblox-inspired designs.</p>
+        <div class="gallery">
+            <img src="https://via.placeholder.com/200x200/ff69b4/fff?text=Art+1" alt="Art Piece 1">
+            <img src="https://via.placeholder.com/200x200/ff1493/fff?text=Art+2" alt="Art Piece 2">
+            <!-- Add more <img> tags for your art; upload to repo -->
+        </div>
+    </section>
+
+    <section id="links">
+        <h2>Connect</h2>
+        <ul>
+            <li><a href="https://www.roblox.com/users/YOUR-ID/profile" target="_blank">Roblox</a></li>
+            <li><a href="https://twitter.com/tsukiattire" target="_blank">Twitter/X</a></li> <!-- Update handles -->
+            <li><a href="https://instagram.com/tsukiattire" target="_blank">Instagram</a></li>
+            <li><a href="mailto:tsuki@attire.com">Email Tsuki</a></li>
+        </ul>
+    </section>
+
+    <!-- Phone Trigger -->
+    <div id="phone" class="phone">
+        <img src="https://via.placeholder.com/80x120/ff69b4/ff1493?text=📞" alt="Talk to Tsuki"> <!-- Replace with your phone.png -->
+    </div>
+
+    <!-- Visual Novel Modal -->
+    <div id="modal" class="modal">
+        <div class="vn-overlay" onclick="closeModal()">
+            <div class="vn-container">
+                <div class="vn-bg"> <!-- Background for VN feel; add image src if you want -->
+                    <img class="vn-sprite" src="https://via.placeholder.com/200x300/ff69b4/fff?text=Tsuki" alt="Tsuki Sprite"> <!-- Your character image -->
+                </div>
+                <div class="vn-dialogue">
+                    <div id="vn-text">Hi there! I'm Tsuki. What sparks your curiosity today? 💫</div>
+                    <div id="vn-choices">
+                        <button onclick="showRantInput()">I'd love a rant about... (type your topic!)</button>
+                        <button onclick="nextDialogue('art')">Chat about your art process?</button>
+                        <button onclick="nextDialogue('roblox')">Roblox secrets and tips?</button>
+                        <button onclick="closeModal()">Bye for now!</button>
+                    </div>
+                    <!-- Rant Input Form (hidden initially) -->
+                    <form id="rant-form" style="display:none;" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        <input type="hidden" name="subject" value="Rant Request from Visitor">
+                        <div id="vn-text-rant">Spill it—what should I rant about? (e.g., 'bad Roblox updates' or 'art block woes')</div>
+                        <input type="text" name="message" placeholder="Your rant topic..." required style="width:80%; padding:10px; margin:10px;">
+                        <button type="submit">Send to Tsuki!</button>
+                        <button type="button" onclick="backToChoices()">Back</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Tsuki Attire. All rights reserved. Made with ❤️ and pixels.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
