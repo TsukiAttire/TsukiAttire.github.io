@@ -5,117 +5,115 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tsuki Attire ♡</title>
 <style>
-* {margin:0;padding:0;box-sizing:border-box}
-body {font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#ff9ecd,#ffb6c1);min-height:100vh;color:#333;overflow-x:hidden;position:relative}
-.sparkles {position:fixed;inset:0;pointer-events:none;z-index:0}
-.sparkle {position:absolute;width:6px;height:6px;background:#fff;border-radius:50%;animation:sparkle 5s infinite linear;opacity:0.7}
-@keyframes sparkle{0%{transform:translateY(100vh);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh);opacity:0}}
-.container {max-width:1100px;margin:0 auto;padding:20px;position:relative;z-index:1}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#ffc0cb,#ffb6c1);min-height:100vh;color:#333;position:relative;overflow-x:hidden}
+.sparkles{position:fixed;inset:0;pointer-events:none}
+.sparkle{position:absolute;width:6px;height:6px;background:#fff;border-radius:50%;animation:s 6s infinite linear;opacity:0.7}
+@keyframes s{0%{transform:translateY(100vh);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh);opacity:0}}
 
-/* Hero Card */
-.hero-card {position:relative;background:rgba(255,255,255,0.92);border-radius:35px;padding:40px 30px;margin:30px auto;box-shadow:0 20px 50px rgba(0,0,0,0.2);backdrop-filter:blur(10px)}
-.chibi-duo {display:flex;justify-content:center;gap:30px;align-items:flex-end;margin-bottom:20px}
-.chibi-duo img {width:220px;height:420px;object-fit:cover;border-radius:25px;box-shadow:0 15px 30px rgba(0,0,0,0.2)}
-.search {position:absolute;top:15px;left:50%;transform:translateX(-50%);width:80%;max-width:500px;padding:16px;border-radius:50px;border:4px solid #ff69b4;background:white;box-shadow:0 8px 25px rgba(0,0,0,0.15);text-align:center;font-size:18px}
-.hero-text {background:rgba(255,255,255,0.95);padding:20px 40px;border-radius:30px;box-shadow:0 10px 30px rgba(0,0,0,0.15);margin:-20px auto 30px;max-width:600px}
-.hero-text h1 {font-family:'Chewy',cursive;font-size:3em;color:#ff1493;margin-bottom:10px}
-.tap-btn {background:linear-gradient(135deg,#ff69b4,#ff1493);color:white;border:none;padding:20px 50px;border-radius:50px;font-size:24px;cursor:pointer;box-shadow:0 12px 30px rgba(255,20,147,0.4);transition:0.3s}
-.tap-btn:hover {transform:scale(1.08);box-shadow:0 18px 40px rgba(255,20,147,0.5)}
+.container{max-width:1100px;margin:20px auto;padding:20px;position:relative}
+.hero-card{background:rgba(255,255,255,0.94);border-radius:40px;padding:50px 30px;box-shadow:0 25px 60px rgba(0,0,0,0.2);position:relative;overflow:hidden}
 
-/* Side buttons */
-.side-left {position:absolute;left:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:20px}
-.side-right {position:absolute;right:20px;top:50%;transform:translateY(-50%);text-align:center}
-.round-btn {width:110px;height:110px;border-radius:50%;background:white;border:4px solid #ff69b4;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,0.15);transition:0.3s;font-size:11px}
-.round-btn:hover {background:#ff69b4;color:white;transform:scale(1.15)}
-.round-btn img {width:45px;margin-bottom:5px}
-.others-star {font-size:5em;color:#ff69b4;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-.note {position:absolute;right:30px;bottom:30px;background:rgba(255,255,255,0.95);padding:20px;border-radius:25px;border-left:6px solid #ff69b4;max-width:280px;box-shadow:0 10px 30px rgba(0,0,0,0.15);font-size:14px}
+.search{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:80%;max-width:520px;padding:18px;border-radius:50px;border:5px solid #ff69b4;background:white;box-shadow:0 10px 30px rgba(0,0,0,0.2);text-align:center;font-size:18px}
+.hero-area{height:500px;border:4px dashed #ff69b4;border-radius:30px;margin:40px 0;background:#fff9;position:relative;display:flex;align-items:center;justify-content:center;font-size:20px;color:#ff69b4}
+.upload{display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;width:100%;height:100%;justify-content:center}
+.upload img{max-width:90%;max-height:90%;border-radius:25px;object-fit:contain}
 
-/* Phone & VN */
-.phone-screen {height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fad0e3}
-.phone-icon {width:160px;animation:ring 1.2s infinite}
-@keyframes ring{0%,100%{transform:rotate(0)}25%{transform:rotate(12deg)}75%{transform:rotate(-12deg)}}
-.answer {background:white;padding:18px 40px;border-radius:40px;margin-top:30px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,0.2);font-size:20px}
-.modal {display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:999;align-items:center;justify-content:center}
-.vn-box {background:linear-gradient(180deg,#ffc0cb,#fff);border-radius:40px;width:92%;max-width:480px;height:85%;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,0.4)}
-.vn-chibi {flex:1;display:flex;align-items:flex-end;justify-content:center;padding:30px}
-.vn-chibi img {width:220px;height:340px;border-radius:25px;object-fit:cover}
-.vn-dialog {padding:30px;background:white;border-top:5px solid #ff69b4}
-.vn-text {background:#ffe4e1;border-radius:25px;padding:20px;margin-bottom:20px;border-left:6px solid #ff69b4;text-align:left;font-size:17px;position:relative}
-.vn-text::after {content:'♡';position:absolute;top:-15px;right:15px;font-size:30px;color:#ff69b4}
-.vn-btns button {width:100%;margin:8px 0;padding:15px;background:#ff69b4;color:white;border:none;border-radius:30px;cursor:pointer;font-size:16px}
-.vn-form input {width:100%;padding:15px;border-radius:25px;border:3px solid #ff69b4;margin:10px 0}
-@media (max-width:900px){.side-left,.side-right,.note{position:static;margin:20px auto}.chibi-duo{flex-direction:column;align-items:center}}
+.hero-text{background:rgba(255,255,255,0.95);padding:25px 40px;border-radius:35px;box-shadow:0 15px 40px rgba(0,0,0,0.15);margin:0 auto;max-width:700px}
+.hero-text h1{font-size:3.5em;color:#ff1493;font-family:'Chewy',cursive;margin-bottom:10px}
+
+.tap-btn{background:linear-gradient(135deg,#ff69b4,#ff1493);color:white;border:none;padding:22px 60px;border-radius:60px;font-size:28px;cursor:pointer;box-shadow:0 15px 40px rgba(255,20,147,0.5);transition:0.3s;margin:30px 0}
+.tap-btn:hover{transform:scale(1.08)}
+
+.side-left{position:absolute;left:15px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:20px}
+.side-right{position:absolute;right:15px;top:50%;transform:translateY(-50%);text-align:center}
+.round-btn{width:110px;height:110px;border-radius:50%;background:white;border:5px solid #ff69b4;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 25px rgba(0,0,0,0.15);transition:0.3s;font-size:11px}
+.round-btn:hover{background:#ff69b4;color:white;transform:scale(1.15)}
+.note{position:absolute;right:30px;bottom:30px;background:rgba(255,255,255,0.96);padding:25px;border-radius:30px;border-left:7px solid #ff69b4;max-width:300px;box-shadow:0 15px 40px rgba(0,0,0,0.15)}
+
+.phone{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000}
+.phone img{max-width:90%}
+.answer{background:white;padding:20px 50px;border-radius:50px;margin-top:30px;cursor:pointer;box-shadow:0 15px 40px rgba(0,0,0,0.3);font-size:22px}
+
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:999;align-items:center;justify-content:center}
+.vn{background:#000;border-radius:45px;width:92%;max-width:500px;height:88%;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.7);display:flex;flex-direction:column}
+.vn-chibi{flex:1;display:flex;align-items:flex-end;justify-content:center;padding:40px}
+.vn-chibi img{max-height:90%;border-radius:25px}
+.vn-dialog{padding:35px;background:#000}
+.vn-text{background:url(https://i.ibb.co/4pV6Z3k/tsuki-box.png) center/contain no-repeat;height:180px;display:flex;align-items:center;justify-content:center;padding:40px;text-align:center;font-size:18px;color:#000;position:relative}
+.vn-btns button{width:100%;margin:12px 0;padding:18px;background:url(https://i.ibb.co/4pV6Z3k/tsuki-box.png) center/contain no-repeat;background-color:#ffe4f1;border:none;border-radius:35px;cursor:pointer;font-size:17px;color:#000;height:80px;display:flex;align-items:center;justify-content:center}
+.vn-form input{width:100%;padding:18px;border-radius:30px;border:4px solid #ff69b4;margin:15px 0;background:#fff}
+
+[contenteditable]:focus{background:rgba(255,105,180,0.15);outline:3px solid #ff69b4;border-radius:12px}
+@media(max-width:900px){.side-left,.side-right,.note{position:static;margin:30px auto}}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Chewy&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="sparkles" id="s"></div>
+<div class="sparkles" id="sparkles"></div>
 
 <!-- Phone Opening -->
-<div id="phone" class="phone-screen">
-  <img src="https://i.ibb.co/9y3n7vP/cute-phone.png" class="phone-icon">
-  <div class="answer" onclick="document.getElementById('phone').style.display='none';document.getElementById('main').style.display='block'">Answer Call ♡</div>
+<div id="phone" class="phone">
+  <img src="https://i.ibb.co/4pV6Z3k/phone-pixel.png">
+  <div class="answer" onclick="document.getElementById('phone').style.display='none';document.getElementById('main').style.display='block'">Answer ♡</div>
 </div>
 
 <!-- Main Card -->
 <div id="main" style="display:none">
   <div class="container">
-
     <div class="hero-card">
-      <input class="search" placeholder="Search for cute Roblox fits? ✨" contenteditable>
+      <input class="search" placeholder="Search..." contenteditable>
 
       <div class="side-left">
-        <div class="round-btn" onclick="alert('Open your playlist here!')"><img src="https://i.ibb.co/4p7v7vL/music.png"><div>Music Playlist</div></div>
-        <div class="round-btn" onclick="window.location.href='https://yourname.github.io/gallery'"><img src="https://i.ibb.co/4p7v7vL/art.png"><div>Memory Book</div></div>
+        <div class="round-btn" contenteditable>Music</div>
+        <div class="round-btn" contenteditable>Memory</div>
       </div>
 
-      <div class="chibi-duo">
-        <img src="https://i.ibb.co/4p7v7vL/tsuki1.png" onclick="this.src=prompt('New image URL:')||this.src">
-        <img src="https://i.ibb.co/4p7v7vL/tsuki2.png" onclick="this.src=prompt('New image URL:')||this.src">
+      <div class="hero-area upload" onclick="upload(this)">
+        <div>Click or drop your main banner / logo</div>
+        <img>
       </div>
 
       <div class="side-right">
-        <div class="others-star">✦</div>
-        <div style="background:white;padding:15px;border-radius:25px;border:4px solid #ff69b4;cursor:pointer" onclick="window...">Others ♡</div>
+        <div style="font-size:5em;color:#ff69b4">✦</div>
+        <div class="round-btn" contenteditable>Others ♡</div>
       </div>
 
       <div class="hero-text" contenteditable>
-        <h1>Tsuki Attire ♡</h1>
-        <p>Roblox fashion & dreamy art world!</p>
+        <h1>Tsuki Attire</h1>
+        <p>Click to write anything ♡</p>
       </div>
 
       <button class="tap-btn" onclick="document.getElementById('vn').style.display='flex'">Tap me ♥</button>
 
       <div class="note" contenteditable>
-        <b>Fan Corner ♡</b><br>
-        Submit rants/art via chat! For site only ♡
+        Your note here
       </div>
     </div>
-
   </div>
 </div>
 
 <!-- Visual Novel -->
-<div id="vn" class="modal">
-  <div class="vn-box">
-    <div class="vn-chibi"><img src="https://i.ibb.co/4p7v7vL/tsuki-chibi.png" onclick="this.src=prompt('New chibi URL:')||this.src"></div>
+<div id="vn" class="modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="vn">
+    <div class="vn-chibi upload" onclick="event.stopPropagation();upload(this)">
+      <div>Click to upload Tsuki chibi</div>
+      <img>
+    </div>
     <div class="vn-dialog">
-      <div class="vn-text" contenteditable>Hi cutie! I'm Tsuki ♡ What do you wanna talk about?</div>
+      <div class="vn-text" contenteditable>Write your greeting here ♡</div>
       <div class="vn-btns">
-        <button onclick="document.querySelector('.vn-text').innerText='Art is life! I love chibi Roblox fits~ 🎨'">Talk Art?</button>
-        <button onclick="document.querySelector('.vn-text').innerText='Roblox secrets incoming! 🚀'">Roblox Chat?</button>
-        <button onclick="document.querySelector('.vn-form').style.display='block';this.parentNode.style.display='none'">Rant Time!</button>
-        <button onclick="document.getElementById('vn').style.display='none'">Bye~</button>
+        <button contenteditable onclick="setText(this.parentNode.previousElementSibling)">Choice 1</button>
+        <button contenteditable onclick="setText(this.parentNode.previousElementSibling)">Choice 2</button>
+        <button onclick="document.querySelector('.vn-form').style.display='block';this.parentNode.style.display='none'">Rant ♡</button>
+        <button onclick="document.getElementById('vn').style.display='none'">Close</button>
       </div>
       <form class="vn-form" style="display:none" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="e24f7b45-cb71-4664-afd4-90b8ffddfa5e">
-        <input type="hidden" name="subject" value="Tsuki Rant ♡">
-        <div class="vn-text" contenteditable>What should I rant about?</div>
-        <input type="text" name="message" placeholder="Your topic..." required>
-        <button type="submit">Send!</button>
+        <div class="vn-text" contenteditable>Ask them anything</div>
+        <input type="text" name="message" placeholder="Type here..." required>
+        <button type="submit">Send</button>
       </form>
     </div>
   </div>
@@ -123,12 +121,27 @@ body {font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#ff9ecd
 
 <script>
 // Sparkles
-for(let i=0;i<40;i++){
+for(let i=0;i<50;i++){
   let s=document.createElement('div');s.className='sparkle';
   s.style.left=Math.random()*100+'vw';
-  s.style.animationDelay=Math.random()*5+'s';
-  document.getElementById('s').appendChild(s);
+  s.style.animationDelay=Math.random()*6+'s';
+  document.getElementById('sparkles').appendChild(s);
 }
+
+// Upload
+function upload(box){
+  const i=document.createElement('input');i.type='file';i.accept='image/*';
+  i.onchange=e=>{const f=e.target.files[0];if(f){const r=new FileReader();r.onload=()=>{let img=box.querySelector('img');if(!img){img=document.createElement('img');box.appendChild(img)}img.src=r.result;save()};r.readAsDataURL(f)}};
+  i.click();
+}
+
+// Button → dialogue
+function setText(t){t.innerText=this.innerText}
+
+// Save everything
+function save(){localStorage.setItem('tsuki-final',document.body.innerHTML)}
+document.addEventListener('input',()=>setTimeout(save,300));
+window.onload=()=>{const s=localStorage.getItem('tsuki-final');if(s)document.body.innerHTML=s;}
 </script>
 </body>
 </html>
